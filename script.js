@@ -9,7 +9,7 @@ class TeamBuilder {
         };
         this.currentSlot = null;
 
-        // Characters that need horizontal flip when on the left (healer position)
+        // Characters that need horizontal flip when on the left (sub position)
         // Add character names here that need to be flipped
         this.flipOnLeft = [
             // 'Hugo', 'Kayro', etc. - to be configured based on character poses
@@ -67,10 +67,13 @@ class TeamBuilder {
             this.closePanel();
         });
 
-        // Reset button
-        document.getElementById('reset-btn').addEventListener('click', () => {
-            this.resetTeam();
-        });
+        // Reset button (eliminado del HTML, pero mantenemos la función por si acaso)
+        const resetBtn = document.getElementById('reset-btn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                this.resetTeam();
+            });
+        }
 
         // Close panel on outside click
         document.getElementById('character-panel').addEventListener('click', (e) => {
@@ -385,10 +388,10 @@ class TeamBuilder {
         // Update DPS (center)
         this.updateVisualPosition(visualDps, this.selectedTeam.dps, 'dps');
 
-        // Update Sub DPS (right)
+        // Update Sub DPS (left - intercambiado con healer)
         this.updateVisualPosition(visualSub, this.selectedTeam.sub, 'sub');
 
-        // Update Healer (left)
+        // Update Healer (right - intercambiado con sub)
         this.updateVisualPosition(visualHealer, this.selectedTeam.healer, 'healer');
     }
 
@@ -397,8 +400,8 @@ class TeamBuilder {
             const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
             const imagePath = `assets/characters/${imageName}.png`;
 
-            // Check if character needs flip when on left (healer position)
-            const needsFlip = position === 'healer' && this.flipOnLeft.includes(character.name);
+            // Check if character needs flip when on left (sub position now)
+            const needsFlip = position === 'sub' && this.flipOnLeft.includes(character.name);
 
             element.innerHTML = `
                 <img src="${imagePath}"

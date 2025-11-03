@@ -180,7 +180,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .slot {
@@ -516,7 +516,8 @@ header {
     background: linear-gradient(135deg, rgba(13, 13, 21, 0.8), rgba(0, 0, 0, 0.9));
     border: 1px solid rgba(0, 183, 255, 0.3);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
+    margin-top: -2rem;
     position: relative;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
     overflow: hidden;
@@ -535,7 +536,7 @@ header {
 
 .summary-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
@@ -645,11 +646,11 @@ header {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(13, 13, 21, 0.9));
     border: 1px solid rgba(139, 0, 0, 0.3);
     border-radius: 20px;
-    padding: 3rem 2rem;
-    margin-bottom: 3rem;
+    padding: 0.5rem 2rem;
+    margin-bottom: 0.5rem;
     position: relative;
-    overflow: hidden;
-    min-height: 500px;
+    overflow: visible;
+    min-height: 350px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -671,7 +672,7 @@ header {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 450px;
+    height: 350px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -706,7 +707,7 @@ header {
     left: 50%;
     transform: translateX(-50%) translateY(50px) scale(0.9);
     z-index: 3;
-    max-height: 450px;
+    max-height: 350px;
 }
 
 .character-position.dps.active {
@@ -714,12 +715,12 @@ header {
 }
 
 .character-position.dps img {
-    max-height: 450px;
+    max-height: 350px;
 }
 
-/* Sub DPS - Right */
+/* Sub DPS - Left (intercambiado con healer) */
 .character-position.sub {
-    right: 15%;
+    left: 5%;
     z-index: 2;
     max-height: 400px;
 }
@@ -728,9 +729,9 @@ header {
     max-height: 400px;
 }
 
-/* Healer - Left */
+/* Healer - Right (intercambiado con sub) */
 .character-position.healer {
-    left: 15%;
+    right: 5%;
     z-index: 2;
     max-height: 400px;
 }
@@ -1072,11 +1073,11 @@ footer {
     }
 
     .character-position.sub {
-        right: 5%;
+        left: 2%;
     }
 
     .character-position.healer {
-        left: 5%;
+        right: 2%;
     }
 }
 
