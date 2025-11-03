@@ -259,7 +259,7 @@ header {
 }
 
 .slot-content {
-    min-height: 140px;
+    min-height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,9 +313,9 @@ header {
 }
 
 .character-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
     border: 3px solid;
     object-fit: cover;
     box-shadow: var(--shadow-deep), var(--glow-cyan);
@@ -509,22 +509,23 @@ header {
 }
 
 /* ===================================
-   TEAM SUMMARY
+   BUILD COMING SOON
    =================================== */
 
-.team-summary {
+.build-coming-soon {
     background: linear-gradient(135deg, rgba(13, 13, 21, 0.8), rgba(0, 0, 0, 0.9));
     border: 1px solid rgba(0, 183, 255, 0.3);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 2rem;
     margin-top: -2rem;
     position: relative;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
     overflow: hidden;
     box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(0, 183, 255, 0.1);
+    text-align: center;
 }
 
-.team-summary::before {
+.build-coming-soon::before {
     content: '';
     position: absolute;
     top: 0;
@@ -534,108 +535,16 @@ header {
     background: linear-gradient(90deg, transparent, var(--warm-accent), transparent);
 }
 
-.summary-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--metallic);
-}
-
-.summary-header h3 {
+.coming-soon-content h3 {
     font-family: var(--font-title);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     background: linear-gradient(135deg, var(--highlight), var(--warm-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
-}
-
-.reset-btn {
-    background: rgba(58, 63, 75, 0.5);
-    border: 1px solid var(--metallic);
-    color: var(--text-light);
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-family: var(--font-title);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-}
-
-.reset-btn:hover {
-    background: var(--warm-accent);
-    border-color: var(--warm-accent);
-    color: var(--bg-main);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(223, 162, 76, 0.5);
-}
-
-.team-composition {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-
-.team-member {
-    background: rgba(6, 18, 31, 0.6);
-    border: 1px solid var(--metallic);
-    border-radius: 10px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.3s ease;
-}
-
-.team-member.filled {
-    border-color: var(--highlight);
-    background: rgba(0, 183, 255, 0.08);
-    animation: pulseGlow 0.6s ease-out;
-}
-
-.role-badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: var(--font-title);
-    letter-spacing: 0.08em;
-    box-shadow: var(--shadow-deep);
-}
-
-.role-badge.dps {
-    background: linear-gradient(135deg, #FF3B3B, #C62828);
-    color: white;
-}
-
-.role-badge.sub {
-    background: linear-gradient(135deg, #FF8A00, #E65100);
-    color: white;
-}
-
-.role-badge.healer {
-    background: linear-gradient(135deg, #35C46A, #2E7D50);
-    color: white;
-}
-
-.member-name {
-    font-weight: 600;
-    color: var(--text-disabled);
-    font-family: var(--font-body);
-    flex: 1;
-}
-
-.team-member.filled .member-name {
-    color: var(--text-light);
 }
 
 /* ===================================
