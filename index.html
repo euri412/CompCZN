@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaos Zero - Team Builder</title>
+    <title>Chaos Zero - Balanced Team Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🧩 Chaos Zero: Nightmare</h1>
-            <h2>Team Builder</h2>
-            <p class="subtitle">Arma tu equipo perfecto según las compatibilidades</p>
+            <div class="logo-container">
+                <div class="holographic-circle"></div>
+                <h2 class="main-title">BALANCED TEAM BUILDER</h2>
+                <h1 class="game-title">CHAOS ZERO: NIGHTMARE</h1>
+            </div>
+            <p class="subtitle">Build your perfect team based on compatibility synergies</p>
         </header>
 
         <main>
@@ -21,12 +27,11 @@
                     <div class="slot-header">
                         <span class="slot-number">1</span>
                         <h3>DPS</h3>
-                        <span class="slot-subtitle">Daño Principal</span>
                     </div>
                     <div class="slot-content">
                         <div class="empty-slot">
                             <span class="empty-icon">⚔️</span>
-                            <span>Selecciona un DPS</span>
+                            <span>Select DPS</span>
                         </div>
                     </div>
                 </div>
@@ -34,13 +39,12 @@
                 <div class="slot" id="slot-sub" data-slot="sub">
                     <div class="slot-header">
                         <span class="slot-number">2</span>
-                        <h3>SUB DPS</h3>
-                        <span class="slot-subtitle">Apoyo Ofensivo</span>
+                        <h3>SUB DPS / SUPPORT</h3>
                     </div>
                     <div class="slot-content">
                         <div class="empty-slot locked">
                             <span class="empty-icon">🔒</span>
-                            <span>Selecciona DPS primero</span>
+                            <span>Select DPS first</span>
                         </div>
                     </div>
                 </div>
@@ -48,13 +52,12 @@
                 <div class="slot" id="slot-healer" data-slot="healer">
                     <div class="slot-header">
                         <span class="slot-number">3</span>
-                        <h3>HEALER</h3>
-                        <span class="slot-subtitle">Soporte / Sanador</span>
+                        <h3>HEALER / SUPPORT</h3>
                     </div>
                     <div class="slot-content">
                         <div class="empty-slot locked">
                             <span class="empty-icon">🔒</span>
-                            <span>Selecciona SUB primero</span>
+                            <span>Select SUB first</span>
                         </div>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
             <!-- Character Selection Panel -->
             <div class="character-panel" id="character-panel">
                 <div class="panel-header">
-                    <h3 id="panel-title">Selecciona un personaje</h3>
+                    <h3 id="panel-title">Select a Character</h3>
                     <button class="close-btn" id="close-panel">✕</button>
                 </div>
                 <div class="character-grid" id="character-grid">
@@ -74,8 +77,8 @@
             <!-- Team Summary -->
             <div class="team-summary" id="team-summary">
                 <div class="summary-header">
-                    <h3>✨ Tu Equipo</h3>
-                    <button class="reset-btn" id="reset-btn">🔄 Reiniciar</button>
+                    <h3>YOUR TEAM COMPOSITION</h3>
+                    <button class="reset-btn" id="reset-btn">RESET</button>
                 </div>
                 <div class="team-composition">
                     <div class="team-member" id="summary-dps">
@@ -95,7 +98,13 @@
         </main>
 
         <footer>
-            <p>Chaos Zero: Nightmare Team Builder | Compatible con Netlify</p>
+            <div class="footer-divider"></div>
+            <p class="footer-text">
+                <span class="footer-icon">⚡</span>
+                Created by a fan, for the fans
+                <span class="footer-icon">⚡</span>
+            </p>
+            <p class="footer-sub">Chaos Zero: Nightmare Community Project</p>
         </footer>
     </div>
 

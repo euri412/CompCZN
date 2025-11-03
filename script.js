@@ -23,7 +23,7 @@ class TeamBuilder {
             this.data = await response.json();
         } catch (error) {
             console.error('Error loading data:', error);
-            alert('Error al cargar los datos. Por favor recarga la página.');
+            alert('Error loading data. Please reload the page.');
         }
     }
 
@@ -80,9 +80,9 @@ class TeamBuilder {
 
         // Set title
         const titles = {
-            dps: 'Selecciona un DPS',
-            sub: 'Selecciona un Sub DPS',
-            healer: 'Selecciona un Healer'
+            dps: 'Select a DPS',
+            sub: 'Select a Sub DPS / Support',
+            healer: 'Select a Healer / Support'
         };
         title.textContent = titles[slotType];
 
@@ -304,15 +304,15 @@ class TeamBuilder {
             `;
         } else {
             const emptyMessages = {
-                dps: { icon: '⚔️', text: 'Selecciona un DPS', locked: false },
+                dps: { icon: '⚔️', text: 'Select DPS', locked: false },
                 sub: {
                     icon: this.selectedTeam.dps ? '🎯' : '🔒',
-                    text: this.selectedTeam.dps ? 'Selecciona un Sub DPS' : 'Selecciona DPS primero',
+                    text: this.selectedTeam.dps ? 'Select Sub DPS' : 'Select DPS first',
                     locked: !this.selectedTeam.dps
                 },
                 healer: {
                     icon: this.selectedTeam.sub ? '💚' : '🔒',
-                    text: this.selectedTeam.sub ? 'Selecciona un Healer' : 'Selecciona SUB primero',
+                    text: this.selectedTeam.sub ? 'Select Healer' : 'Select SUB first',
                     locked: !this.selectedTeam.sub
                 }
             };
