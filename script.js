@@ -190,8 +190,6 @@ class TeamBuilder {
                 <img src="${imagePath}" alt="${character.name}"
                      style="border-color: ${borderColor}"
                      onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23333%22 width=%22100%22 height=%22100%22/%3E%3Ctext fill=%22%23fff%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22%3E${character.name.charAt(0)}%3C/text%3E%3C/svg%3E'">
-                <div class="name">${character.name}</div>
-                <div class="role">${character.role}</div>
             `;
 
             card.addEventListener('click', () => {
@@ -217,7 +215,6 @@ class TeamBuilder {
         this.selectedTeam[this.currentSlot] = character;
         this.closePanel();
         this.updateUI();
-        this.updateSummary();
         this.updateCompositionVisual();
     }
 
@@ -266,7 +263,6 @@ class TeamBuilder {
         }
 
         this.updateUI();
-        this.updateSummary();
         this.updateCompositionVisual();
     }
 
@@ -277,7 +273,6 @@ class TeamBuilder {
             healer: null
         };
         this.updateUI();
-        this.updateSummary();
         this.updateCompositionVisual();
     }
 
@@ -340,40 +335,6 @@ class TeamBuilder {
         }
     }
 
-    updateSummary() {
-        // Update DPS
-        const dpsSummary = document.getElementById('summary-dps');
-        const dpsName = dpsSummary.querySelector('.member-name');
-        if (this.selectedTeam.dps) {
-            dpsName.textContent = this.selectedTeam.dps.name;
-            dpsSummary.classList.add('filled');
-        } else {
-            dpsName.textContent = '—';
-            dpsSummary.classList.remove('filled');
-        }
-
-        // Update Sub
-        const subSummary = document.getElementById('summary-sub');
-        const subName = subSummary.querySelector('.member-name');
-        if (this.selectedTeam.sub) {
-            subName.textContent = this.selectedTeam.sub.name;
-            subSummary.classList.add('filled');
-        } else {
-            subName.textContent = '—';
-            subSummary.classList.remove('filled');
-        }
-
-        // Update Healer
-        const healerSummary = document.getElementById('summary-healer');
-        const healerName = healerSummary.querySelector('.member-name');
-        if (this.selectedTeam.healer) {
-            healerName.textContent = this.selectedTeam.healer.name;
-            healerSummary.classList.add('filled');
-        } else {
-            healerName.textContent = '—';
-            healerSummary.classList.remove('filled');
-        }
-    }
 
     updateCompositionVisual() {
         const emptyMessage = document.getElementById('composition-empty');
