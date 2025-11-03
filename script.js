@@ -1,3 +1,18 @@
+// Parallax Background Effect
+document.addEventListener('mousemove', (e) => {
+    const parallaxBg = document.getElementById('parallax-bg');
+    if (parallaxBg) {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        // Very slow movement (only 2% range)
+        const moveX = (mouseX - 0.5) * 2;
+        const moveY = (mouseY - 0.5) * 2;
+
+        parallaxBg.style.transform = `translate(${moveX}%, ${moveY}%)`;
+    }
+});
+
 // Team Builder Logic
 class TeamBuilder {
     constructor() {
