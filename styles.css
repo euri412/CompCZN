@@ -11,20 +11,26 @@
 }
 
 :root {
-    /* Color Palette */
-    --bg-main: #06121F;
+    /* Dark Death-Themed Palette */
+    --bg-main: #000000;
+    --bg-secondary: #0a0a0f;
+    --bg-card: #0d0d15;
     --highlight: #00B7FF;
     --electric: #0077B6;
     --energy: #00FFF6;
-    --metallic: #3A3F4B;
-    --warm-accent: #DFA24C;
-    --text-light: #C8E6FF;
-    --text-disabled: #6A7B8C;
+    --metallic: #1a1a24;
+    --warm-accent: #8B4513;
+    --blood-red: #8B0000;
+    --death-purple: #4B0082;
+    --text-light: #8a9ba8;
+    --text-disabled: #4a4a5a;
 
     /* Effects */
-    --glow-cyan: 0 0 20px rgba(0, 183, 255, 0.6);
-    --glow-energy: 0 0 25px rgba(0, 255, 246, 0.5);
-    --shadow-deep: 0 8px 32px rgba(0, 0, 0, 0.8);
+    --glow-cyan: 0 0 15px rgba(0, 183, 255, 0.3);
+    --glow-energy: 0 0 20px rgba(0, 255, 246, 0.2);
+    --glow-death: 0 0 20px rgba(139, 0, 0, 0.4);
+    --shadow-deep: 0 8px 40px rgba(0, 0, 0, 0.95);
+    --shadow-abyss: 0 15px 60px rgba(0, 0, 0, 1);
 
     /* Typography */
     --font-title: 'Orbitron', sans-serif;
@@ -49,9 +55,22 @@ body::before {
     width: 100%;
     height: 100%;
     background-image:
-        linear-gradient(rgba(0, 183, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 183, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(139, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 183, 255, 0.02) 1px, transparent 1px);
     background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Vignette Effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -165,14 +184,15 @@ header {
 }
 
 .slot {
-    background: rgba(58, 63, 75, 0.2);
-    border: 1px solid var(--highlight);
+    background: linear-gradient(135deg, rgba(13, 13, 21, 0.9), rgba(0, 0, 0, 0.95));
+    border: 1px solid rgba(0, 183, 255, 0.3);
     border-radius: 12px;
     padding: 1.5rem;
     position: relative;
     transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease-out backwards;
     overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(0, 183, 255, 0.1), var(--shadow-deep);
 }
 
 .slot::before {
@@ -331,20 +351,20 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    background: linear-gradient(135deg, rgba(6, 18, 31, 0.98), rgba(58, 63, 75, 0.95));
-    border: 2px solid var(--highlight);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(13, 13, 21, 0.98));
+    border: 2px solid rgba(0, 183, 255, 0.4);
     border-radius: 16px;
     padding: 2rem;
     max-width: 900px;
     width: 90%;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), var(--glow-cyan);
+    box-shadow: var(--shadow-abyss), var(--glow-cyan), inset 0 1px 0 rgba(0, 183, 255, 0.2);
     z-index: 1000;
     opacity: 0;
     pointer-events: none;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 .character-panel::before {
@@ -412,8 +432,8 @@ header {
 }
 
 .character-card {
-    background: rgba(58, 63, 75, 0.3);
-    border: 1px solid var(--metallic);
+    background: linear-gradient(135deg, rgba(13, 13, 21, 0.6), rgba(0, 0, 0, 0.8));
+    border: 1px solid rgba(0, 183, 255, 0.2);
     border-radius: 10px;
     padding: 1rem;
     text-align: center;
@@ -421,6 +441,7 @@ header {
     transition: all 0.3s ease;
     animation: fadeIn 0.4s ease-out backwards;
     position: relative;
+    box-shadow: var(--shadow-deep);
 }
 
 .character-card::before {
@@ -492,13 +513,14 @@ header {
    =================================== */
 
 .team-summary {
-    background: linear-gradient(135deg, rgba(58, 63, 75, 0.3), rgba(6, 18, 31, 0.6));
-    border: 1px solid var(--electric);
+    background: linear-gradient(135deg, rgba(13, 13, 21, 0.8), rgba(0, 0, 0, 0.9));
+    border: 1px solid rgba(0, 183, 255, 0.3);
     border-radius: 16px;
     padding: 2rem;
     position: relative;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
     overflow: hidden;
+    box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(0, 183, 255, 0.1);
 }
 
 .team-summary::before {
@@ -613,6 +635,134 @@ header {
 
 .team-member.filled .member-name {
     color: var(--text-light);
+}
+
+/* ===================================
+   TEAM COMPOSITION VISUAL
+   =================================== */
+
+.team-composition-visual {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(13, 13, 21, 0.9));
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: var(--shadow-abyss), inset 0 -50px 100px rgba(139, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out 0.5s backwards;
+}
+
+.team-composition-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.5), transparent);
+}
+
+.composition-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 450px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.character-position {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
+}
+
+.character-position.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.character-position img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+/* DPS - Center */
+.character-position.dps {
+    left: 50%;
+    transform: translateX(-50%) translateY(50px) scale(0.9);
+    z-index: 3;
+    max-height: 450px;
+}
+
+.character-position.dps.active {
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.character-position.dps img {
+    max-height: 450px;
+}
+
+/* Sub DPS - Right */
+.character-position.sub {
+    right: 15%;
+    z-index: 2;
+    max-height: 400px;
+}
+
+.character-position.sub img {
+    max-height: 400px;
+}
+
+/* Healer - Left */
+.character-position.healer {
+    left: 15%;
+    z-index: 2;
+    max-height: 400px;
+}
+
+.character-position.healer img {
+    max-height: 400px;
+}
+
+/* Flip class for characters that need horizontal flip */
+.character-position.flip img {
+    transform: scaleX(-1);
+}
+
+/* Empty state message */
+.composition-empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-disabled);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+}
+
+.composition-empty .icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.3;
 }
 
 /* ===================================
@@ -891,6 +1041,42 @@ footer {
     .holographic-circle {
         width: 150px;
         height: 150px;
+    }
+
+    /* Composition Visual Responsive */
+    .team-composition-visual {
+        min-height: 350px;
+        padding: 2rem 1rem;
+    }
+
+    .composition-container {
+        height: 320px;
+    }
+
+    .character-position.dps {
+        max-height: 320px;
+    }
+
+    .character-position.dps img {
+        max-height: 320px;
+    }
+
+    .character-position.sub,
+    .character-position.healer {
+        max-height: 280px;
+    }
+
+    .character-position.sub img,
+    .character-position.healer img {
+        max-height: 280px;
+    }
+
+    .character-position.sub {
+        right: 5%;
+    }
+
+    .character-position.healer {
+        left: 5%;
     }
 }
 

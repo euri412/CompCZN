@@ -1,6 +1,13 @@
-# Character Images
+# Character Full-Body Images (Vertical)
 
-This folder contains character portrait images for the team builder.
+This folder contains **vertical full-body** character images used for the team composition visual display.
+
+## Image Specifications
+
+- **Format**: PNG with transparency
+- **Size**: 861x1239px (vertical/portrait orientation)
+- **Content**: Full-body character illustration
+- **Aspect Ratio**: Approximately 0.7:1 (vertical)
 
 ## Naming Convention
 
@@ -48,13 +55,20 @@ All character images must follow this naming pattern:
 - `rei.png`
 - `nia.png`
 
-## Image Requirements
+## Team Composition Display
 
-- **Format**: PNG (with transparency if possible)
-- **Recommended size**: 200x200 pixels minimum
-- **Aspect ratio**: Square (1:1)
-- **Quality**: High resolution for better display
+These images are used in the visual team composition section where:
+- **DPS** appears in the **center** (z-index: 3, max-height: 450px)
+- **Sub DPS** appears on the **right** (z-index: 2, max-height: 400px)
+- **Healer** appears on the **left** (z-index: 2, max-height: 400px)
 
-## Placeholder Behavior
+## Horizontal Flip for Position
 
-If an image is missing, the system will automatically display a placeholder with the character's first letter.
+Some characters need to be horizontally flipped when placed on the left (Healer position) to avoid visual obstruction. The flip configuration will be managed in the JavaScript code.
+
+Characters that may need flipping when on the left:
+- To be determined based on character pose direction
+
+## Note
+
+This folder is separate from `assets/select/` which contains square images (512x512) used for the character selection grid panel.

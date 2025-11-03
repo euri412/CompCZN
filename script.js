@@ -8,6 +8,13 @@ class TeamBuilder {
             healer: null
         };
         this.currentSlot = null;
+
+        // Characters that need horizontal flip when on the left (healer position)
+        // Add character names here that need to be flipped
+        this.flipOnLeft = [
+            // 'Hugo', 'Kayro', etc. - to be configured based on character poses
+        ];
+
         this.init();
     }
 
@@ -169,9 +176,9 @@ class TeamBuilder {
             card.className = 'character-card';
             card.style.setProperty('--index', index);
 
-            // Create image path
+            // Create image path for selection grid (square images)
             const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
-            const imagePath = `assets/characters/${imageName}.png`;
+            const imagePath = `assets/select/${imageName}.png`;
 
             // Border color based on affinity
             const borderColor = character.affinity || '#666';
@@ -208,6 +215,7 @@ class TeamBuilder {
         this.closePanel();
         this.updateUI();
         this.updateSummary();
+        this.updateCompositionVisual();
     }
 
     getAvailableCharactersForTempTeam(tempTeam) {
@@ -256,6 +264,7 @@ class TeamBuilder {
 
         this.updateUI();
         this.updateSummary();
+        this.updateCompositionVisual();
     }
 
     resetTeam() {
@@ -266,6 +275,7 @@ class TeamBuilder {
         };
         this.updateUI();
         this.updateSummary();
+        this.updateCompositionVisual();
     }
 
     updateUI() {
@@ -288,7 +298,7 @@ class TeamBuilder {
 
         if (character) {
             const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
-            const imagePath = `assets/characters/${imageName}.png`;
+            const imagePath = `assets/select/${imageName}.png`;
             const borderColor = character.affinity || '#666';
 
             content.innerHTML = `
@@ -359,6 +369,59 @@ class TeamBuilder {
         } else {
             healerName.textContent = '—';
             healerSummary.classList.remove('filled');
+        }
+    }
+
+    updateCompositionVisual() {
+        const emptyMessage = document.getElementById('composition-empty');
+        const visualDps = document.getElementById('visual-dps');
+        const visualSub = document.getElementById('visual-sub');
+        const visualHealer = document.getElementById('visual-healer');
+
+        // Show/hide empty message
+        const hasAnyCharacter = this.selectedTeam.dps || this.selectedTeam.sub || this.selectedTeam.healer;
+        emptyMessage.style.display = hasAnyCharacter ? 'none' : 'block';
+
+        // Update DPS (center)
+        this.updateVisualPosition(visualDps, this.selectedTeam.dps, 'dps');
+
+        // Update Sub DPS (right)
+        this.updateVisualPosition(visualSub, this.selectedTeam.sub, 'sub');
+
+        // Update Healer (left)
+        this.updateVisualPosition(visualHealer, this.selectedTeam.healer, 'healer');
+    }
+
+    updateVisualPosition(element, character, position) {
+        if (character) {
+            const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
+            const imagePath = `assets/characters/${imageName}.png`;
+
+            // Check if character needs flip when on left (healer position)
+            const needsFlip = position === 'healer' && this.flipOnLeft.includes(character.name);
+
+            element.innerHTML = `
+                <img src="${imagePath}"
+                     alt="${character.name}"
+                     onerror="this.style.display='none'">
+            `;
+
+            // Add flip class if needed
+            if (needsFlip) {
+                element.classList.add('flip');
+            } else {
+                element.classList.remove('flip');
+            }
+
+            // Activate with animation
+            setTimeout(() => {
+                element.classList.add('active');
+            }, 100);
+        } else {
+            element.classList.remove('active', 'flip');
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 600); // Wait for exit animation
         }
     }
 }
