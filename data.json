@@ -1,0 +1,193 @@
+{
+  "characters": [
+    {
+      "name": "Haru",
+      "role": "dps",
+      "affinity": "#00D4FF"
+    },
+    {
+      "name": "Khalipe",
+      "role": "dps",
+      "affinity": "#FF8A00"
+    },
+    {
+      "name": "Mei Lin",
+      "role": "dps",
+      "affinity": "#FF3B3B"
+    },
+    {
+      "name": "Hugo",
+      "role": "dps",
+      "affinity": "#35C46A"
+    },
+    {
+      "name": "Kayro",
+      "role": "dps",
+      "affinity": "#8A3DFF"
+    },
+    {
+      "name": "Magna",
+      "role": "dps",
+      "affinity": "#3A6BFF"
+    },
+    {
+      "name": "Rin",
+      "role": "dps",
+      "affinity": "#7A4A2B"
+    },
+    {
+      "name": "Renoa",
+      "role": "dps",
+      "affinity": "#FF5FAF"
+    },
+    {
+      "name": "Orlea",
+      "role": "dps",
+      "affinity": "#F4C542"
+    },
+    {
+      "name": "Luke",
+      "role": "dps",
+      "affinity": "#00B5A4"
+    },
+    {
+      "name": "Veronica",
+      "role": "sub",
+      "affinity": "#FF5E00"
+    },
+    {
+      "name": "Tressa",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Beryl",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Cassius",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Amir",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Selene",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Lucas",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Owen",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Maribell",
+      "role": "sub",
+      "affinity": null
+    },
+    {
+      "name": "Mika",
+      "role": "healer",
+      "affinity": null
+    },
+    {
+      "name": "Rei",
+      "role": "healer",
+      "affinity": null
+    },
+    {
+      "name": "Nia",
+      "role": "healer",
+      "affinity": null
+    }
+  ],
+  "universal_healers": ["Mika", "Rei", "Nia"],
+  "compatibility": {
+    "Haru": {
+      "sub_candidates": ["Khalipe", "Magna", "Veronica", "Beryl", "Cassius", "Amir"],
+      "healer_candidates": ["Mika"]
+    },
+    "Khalipe": {
+      "sub_candidates": ["Veronica", "Beryl", "Amir", "Selene"],
+      "healer_candidates": ["Mika", "Nia"]
+    },
+    "Mei Lin": {
+      "sub_candidates": ["Veronica", "Selene"],
+      "healer_candidates": ["Mika", "Rei"]
+    },
+    "Hugo": {
+      "sub_candidates": ["Tressa", "Beryl"],
+      "healer_candidates": ["Mika", "Rei", "Nia"]
+    },
+    "Kayro": {
+      "sub_candidates": ["Tressa"],
+      "healer_candidates": ["Mika", "Rei"]
+    },
+    "Magna": {
+      "sub_candidates": ["Veronica", "Tressa", "Beryl", "Amir", "Maribell"],
+      "healer_candidates": ["Mika", "Rei"]
+    },
+    "Rin": {
+      "sub_candidates": ["Veronica", "Cassius", "Orlea"],
+      "healer_candidates": ["Mika", "Rei", "Nia"]
+    },
+    "Renoa": {
+      "sub_candidates": ["Veronica", "Cassius"],
+      "healer_candidates": ["Rei", "Nia"]
+    },
+    "Orlea": {
+      "sub_candidates": ["Rin", "Tressa", "Beryl", "Cassius", "Maribell"],
+      "healer_candidates": ["Mika", "Rei", "Nia"]
+    },
+    "Luke": {
+      "sub_candidates": ["Lucas"],
+      "healer_candidates": ["Rei"]
+    },
+    "Veronica": {
+      "can_support": ["Haru", "Khalipe", "Magna", "Rin", "Renoa", "Mei Lin"]
+    },
+    "Tressa": {
+      "can_support": ["Hugo", "Kayro", "Magna", "Orlea"]
+    },
+    "Beryl": {
+      "can_support": ["Haru", "Khalipe", "Hugo", "Magna", "Orlea"]
+    },
+    "Cassius": {
+      "can_support": ["Haru", "Orlea", "Rin", "Renoa"]
+    },
+    "Amir": {
+      "can_support": ["Haru", "Magna", "Khalipe"]
+    },
+    "Selene": {
+      "can_support": ["Mei Lin", "Khalipe"]
+    },
+    "Lucas": {
+      "can_support": ["Luke"]
+    },
+    "Owen": {
+      "can_support": ["Lucas"]
+    },
+    "Maribell": {
+      "can_support": ["Magna", "Orlea"]
+    },
+    "Mika": {
+      "can_support": ["Haru", "Khalipe", "Hugo", "Kayro", "Mei Lin", "Magna", "Rin"]
+    },
+    "Rei": {
+      "can_support": ["Mei Lin", "Hugo", "Kayro", "Magna", "Rin", "Renoa", "Luke", "Orlea"]
+    },
+    "Nia": {
+      "can_support": ["Khalipe", "Hugo", "Rin", "Renoa"]
+    }
+  }
+}

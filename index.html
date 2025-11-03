@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos Zero - Team Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧩 Chaos Zero: Nightmare</h1>
+            <h2>Team Builder</h2>
+            <p class="subtitle">Arma tu equipo perfecto según las compatibilidades</p>
+        </header>
+
+        <main>
+            <!-- Team Slots -->
+            <div class="team-slots">
+                <div class="slot" id="slot-dps" data-slot="dps">
+                    <div class="slot-header">
+                        <span class="slot-number">1</span>
+                        <h3>DPS</h3>
+                        <span class="slot-subtitle">Daño Principal</span>
+                    </div>
+                    <div class="slot-content">
+                        <div class="empty-slot">
+                            <span class="empty-icon">⚔️</span>
+                            <span>Selecciona un DPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slot" id="slot-sub" data-slot="sub">
+                    <div class="slot-header">
+                        <span class="slot-number">2</span>
+                        <h3>SUB DPS</h3>
+                        <span class="slot-subtitle">Apoyo Ofensivo</span>
+                    </div>
+                    <div class="slot-content">
+                        <div class="empty-slot locked">
+                            <span class="empty-icon">🔒</span>
+                            <span>Selecciona DPS primero</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slot" id="slot-healer" data-slot="healer">
+                    <div class="slot-header">
+                        <span class="slot-number">3</span>
+                        <h3>HEALER</h3>
+                        <span class="slot-subtitle">Soporte / Sanador</span>
+                    </div>
+                    <div class="slot-content">
+                        <div class="empty-slot locked">
+                            <span class="empty-icon">🔒</span>
+                            <span>Selecciona SUB primero</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Selection Panel -->
+            <div class="character-panel" id="character-panel">
+                <div class="panel-header">
+                    <h3 id="panel-title">Selecciona un personaje</h3>
+                    <button class="close-btn" id="close-panel">✕</button>
+                </div>
+                <div class="character-grid" id="character-grid">
+                    <!-- Characters will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Team Summary -->
+            <div class="team-summary" id="team-summary">
+                <div class="summary-header">
+                    <h3>✨ Tu Equipo</h3>
+                    <button class="reset-btn" id="reset-btn">🔄 Reiniciar</button>
+                </div>
+                <div class="team-composition">
+                    <div class="team-member" id="summary-dps">
+                        <span class="role-badge dps">DPS</span>
+                        <span class="member-name">—</span>
+                    </div>
+                    <div class="team-member" id="summary-sub">
+                        <span class="role-badge sub">SUB</span>
+                        <span class="member-name">—</span>
+                    </div>
+                    <div class="team-member" id="summary-healer">
+                        <span class="role-badge healer">HEAL</span>
+                        <span class="member-name">—</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Chaos Zero: Nightmare Team Builder | Compatible con Netlify</p>
+        </footer>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
