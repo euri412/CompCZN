@@ -278,7 +278,7 @@ header {
     overflow: visible;
     min-height: 260px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 }
 
@@ -326,14 +326,24 @@ header {
     gap: 0;
     margin-top: 0;
     cursor: pointer;
-    padding: 0;
-    border-radius: 0;
-    background: none;
     transition: all 0.3s ease;
-    animation: slot-pop 0.4s ease-out;
-    position: relative;
-    margin-top: -60px;
-    z-index: 10;
+    animation: sprite-rise 0.6s ease-out;
+    z-index: 30;
+}
+
+/* Fondo negro translúcido detrás del nombre y rol */
+.selected-character::before {
+    content: "";
+    position: absolute;
+    top: -4.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: 4.6rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    z-index: 40;
+    pointer-events: none;
 }
 
 .selected-character:hover {
@@ -610,7 +620,7 @@ header {
     position: absolute;
     bottom: 0;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: flex-end;
     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 0;
