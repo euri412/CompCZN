@@ -326,24 +326,14 @@ header {
     gap: 0;
     margin-top: 0;
     cursor: pointer;
+    padding: 0;
+    border-radius: 0;
+    background: none;
     transition: all 0.3s ease;
     animation: slot-pop 0.4s ease-out;
-    z-index: 30;
-}
-
-/* Fondo negro translúcido detrás del nombre y rol */
-.selected-character::before {
-    content: "";
-    position: absolute;
-    top: -4.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    height: 4.6rem;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    z-index: 40;
-    pointer-events: none;
+    position: relative;
+    margin-top: -60px;
+    z-index: 10;
 }
 
 .selected-character:hover {
@@ -364,10 +354,17 @@ header {
     border-radius: 0;
     background: transparent;
     object-fit: contain;
-    object-position: bottom;
-    filter: drop-shadow(0 35px 45px rgba(0, 0, 0, 0.65));
-    pointer-events: none;
-    z-index: 20;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6));
+    transform: translateY(60px);
+    animation: sprite-rise 0.5s ease-out forwards 0.1s;
+    pointer-events: auto;
+    position: relative;
+    z-index: 15;
+}
+
+.selected-character:hover .character-avatar {
+    transform: scale(1.05) translateY(0);
+    filter: drop-shadow(0 25px 35px rgba(0, 183, 255, 0.5));
 }
 
 /* Nombre del personaje - encima del sprite */
@@ -617,7 +614,7 @@ header {
     align-items: flex-end;
     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 0;
-    transform: translateY(50px) scale(0.9);
+    transform: translateY(60px) scale(0.9);
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
 }
 
@@ -636,7 +633,7 @@ header {
 /* DPS - Center */
 .character-position.dps {
     left: 50%;
-    transform: translateX(-50%) translateY(50px) scale(0.9);
+    transform: translateX(-50%) translateY(60px) scale(0.9);
     z-index: 3;
     max-height: 350px;
 }
@@ -858,7 +855,7 @@ footer {
 @keyframes slideUpFromBottom {
     from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(80px);
     }
     to {
         opacity: 1;
@@ -868,11 +865,11 @@ footer {
 
 @keyframes sprite-rise {
     from {
-        transform: translateY(80px) scale(1);
+        transform: translateY(80px) scale(0.95);
         opacity: 0;
     }
     to {
-        transform: translateY(0) scale(1.02);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
