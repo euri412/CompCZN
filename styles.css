@@ -200,7 +200,7 @@ header {
 
 .slot {
     background: linear-gradient(135deg, rgba(13, 13, 21, 0.9), rgba(0, 0, 0, 0.95));
-    border: 1px solid rgba(0, 183, 255, 0.3);
+    border: 3px solid #000;
     border-radius: 12px;
     padding: 1.5rem;
     position: relative;
@@ -274,12 +274,12 @@ header {
 }
 
 .slot-content {
-    min-height: 240px;
+    position: relative;
+    overflow: visible;
+    min-height: 260px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    position: relative;
-    overflow: visible;
 }
 
 .empty-slot {
@@ -312,12 +312,19 @@ header {
     filter: grayscale(100%);
 }
 
-/* Contenedor del personaje dentro del slot - estilo sprite */
+/* ===================================
+   PERSONAJE SELECCIONADO (SPRITE)
+   =================================== */
+
 .selected-character {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 0;
     cursor: pointer;
     padding: 0;
     border-radius: 0;
@@ -333,11 +340,16 @@ header {
     background: none;
 }
 
-/* Imagen del personaje tipo sprite - sin recorte, completo */
+/* Sprite del personaje - pegado abajo */
 .character-avatar {
-    width: 320px;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: calc(100% - 40px);
     height: auto;
-    max-height: 380px;
+    max-height: 520px;
     border: none;
     border-radius: 0;
     background: transparent;
@@ -355,25 +367,37 @@ header {
     filter: drop-shadow(0 25px 35px rgba(0, 183, 255, 0.5));
 }
 
+/* Nombre del personaje - encima del sprite */
 .character-name {
-    font-weight: 600;
-    font-size: 1.1rem;
+    position: absolute;
+    top: -3.6rem;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: var(--font-title);
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: #00B7FF;
+    text-transform: uppercase;
+    text-align: center;
     letter-spacing: 0.05em;
-    color: var(--text-light);
+    line-height: 1;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 5;
+    z-index: 50;
 }
 
+/* Rol del personaje - debajo del nombre */
 .character-role {
-    font-size: 0.8rem;
-    color: var(--text-disabled);
+    position: absolute;
+    top: -1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 1);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    text-align: center;
+    letter-spacing: 0.2em;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 5;
+    z-index: 50;
 }
 
 /* ===================================
@@ -622,7 +646,7 @@ header {
     max-height: 350px;
 }
 
-/* Sub DPS - Left (intercambiado con healer) */
+/* Sub DPS - Left */
 .character-position.sub {
     left: 5%;
     z-index: 2;
@@ -633,7 +657,7 @@ header {
     max-height: 400px;
 }
 
-/* Healer - Right (intercambiado con sub) */
+/* Healer - Right */
 .character-position.healer {
     right: 5%;
     z-index: 2;
@@ -839,7 +863,6 @@ footer {
     }
 }
 
-/* Animación sprite rise - personaje sale desde abajo */
 @keyframes sprite-rise {
     from {
         transform: translateY(80px) scale(0.95);
@@ -851,7 +874,6 @@ footer {
     }
 }
 
-/* Animación de aparición del contenedor */
 @keyframes slot-pop {
     from {
         opacity: 0;
@@ -981,7 +1003,6 @@ footer {
         height: 150px;
     }
 
-    /* Composition Visual Responsive */
     .team-composition-visual {
         min-height: 350px;
         padding: 2rem 1rem;
