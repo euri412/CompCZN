@@ -200,7 +200,7 @@ header {
 
 .slot {
     background: linear-gradient(135deg, rgba(13, 13, 21, 0.9), rgba(0, 0, 0, 0.95));
-    border: 3px solid #000;
+    border: 1px solid rgba(0, 183, 255, 0.3);
     border-radius: 12px;
     padding: 1.5rem;
     position: relative;
@@ -274,12 +274,12 @@ header {
 }
 
 .slot-content {
+    min-height: 240px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     position: relative;
     overflow: visible;
-    min-height: 260px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .empty-slot {
@@ -312,61 +312,40 @@ header {
     filter: grayscale(100%);
 }
 
-/* ===================================
-   PERSONAJE SELECCIONADO (SPRITE)
-   =================================== */
-
+/* Contenedor del personaje dentro del slot - estilo sprite */
 .selected-character {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    margin-top: 0;
+    align-items: center;
+    gap: 0.5rem;
     cursor: pointer;
+    padding: 0;
+    padding-top: 0;
+    border-radius: 0;
+    background: none;
     transition: all 0.3s ease;
-    animation: sprite-rise 0.6s ease-out;
-    z-index: 30;
-}
-
-/* Fondo negro translúcido detrás del nombre y rol */
-.selected-character::before {
-    content: "";
-    position: absolute;
-    top: -4.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    height: 4.6rem;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    z-index: 40;
-    pointer-events: none;
+    animation: slot-pop 0.4s ease-out;
+    position: relative;
+    margin-top: -40px;
+    z-index: 10;
 }
 
 .selected-character:hover {
     background: none;
 }
 
-/* Sprite del personaje - pegado abajo */
+/* Imagen del personaje tipo sprite - sin recorte, completo */
 .character-avatar {
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: calc(100% - 40px);
+    width: 320px;
     height: auto;
-    max-height: 520px;
+    max-height: 380px;
     border: none;
     border-radius: 0;
     background: transparent;
     object-fit: contain;
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6));
-    transform: translateY(60px);
-    animation: sprite-rise 0.5s ease-out forwards 0.1s;
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.55));
+    transform: translateY(40px);
+    animation: sprite-rise 0.45s ease-out forwards 0.05s;
     pointer-events: auto;
     position: relative;
     z-index: 15;
@@ -374,40 +353,28 @@ header {
 
 .selected-character:hover .character-avatar {
     transform: scale(1.05) translateY(0);
-    filter: drop-shadow(0 25px 35px rgba(0, 183, 255, 0.5));
+    filter: drop-shadow(0 30px 40px rgba(0, 183, 255, 0.4));
 }
 
-/* Nombre del personaje - encima del sprite */
 .character-name {
-    position: absolute;
-    top: -3.6rem;
-    left: 50%;
-    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 1.1rem;
     font-family: var(--font-title);
-    font-size: 2.3rem;
-    font-weight: 900;
-    color: #00B7FF;
-    text-transform: uppercase;
-    text-align: center;
     letter-spacing: 0.05em;
-    line-height: 1;
+    color: var(--text-light);
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-    z-index: 50;
+    position: relative;
+    z-index: 5;
 }
 
-/* Rol del personaje - debajo del nombre */
 .character-role {
-    position: absolute;
-    top: -1.1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 1);
+    font-size: 0.8rem;
+    color: var(--text-disabled);
     text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-    z-index: 50;
+    position: relative;
+    z-index: 5;
 }
 
 /* ===================================
@@ -620,11 +587,11 @@ header {
     position: absolute;
     bottom: 0;
     height: 100%;
-    display: none;
+    display: flex;
     align-items: flex-end;
     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 0;
-    transform: translateY(60px) scale(0.9);
+    transform: translateY(50px) scale(0.9);
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
 }
 
@@ -643,7 +610,7 @@ header {
 /* DPS - Center */
 .character-position.dps {
     left: 50%;
-    transform: translateX(-50%) translateY(60px) scale(0.9);
+    transform: translateX(-50%) translateY(50px) scale(0.9);
     z-index: 3;
     max-height: 350px;
 }
@@ -656,7 +623,7 @@ header {
     max-height: 350px;
 }
 
-/* Sub DPS - Left */
+/* Sub DPS - Left (intercambiado con healer) */
 .character-position.sub {
     left: 5%;
     z-index: 2;
@@ -667,7 +634,7 @@ header {
     max-height: 400px;
 }
 
-/* Healer - Right */
+/* Healer - Right (intercambiado con sub) */
 .character-position.healer {
     right: 5%;
     z-index: 2;
@@ -865,7 +832,7 @@ footer {
 @keyframes slideUpFromBottom {
     from {
         opacity: 0;
-        transform: translateY(80px);
+        transform: translateY(100px);
     }
     to {
         opacity: 1;
@@ -873,17 +840,19 @@ footer {
     }
 }
 
+/* Animación sprite rise - personaje sale desde abajo */
 @keyframes sprite-rise {
     from {
-        transform: translateY(80px) scale(0.95);
+        transform: translateY(80px) scale(1);
         opacity: 0;
     }
     to {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(1.02);
         opacity: 1;
     }
 }
 
+/* Animación de aparición del contenedor */
 @keyframes slot-pop {
     from {
         opacity: 0;
@@ -1013,6 +982,7 @@ footer {
         height: 150px;
     }
 
+    /* Composition Visual Responsive */
     .team-composition-visual {
         min-height: 350px;
         padding: 2rem 1rem;
@@ -1062,4 +1032,293 @@ footer {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         gap: 0.75rem;
     }
+}
+
+/* --- FIX: sprite pegado abajo SIN invadir el slot de al lado --- */
+.slot-content {
+    position: relative;
+    overflow: visible; /* seguimos dejando que salga un poco hacia arriba */
+    min-height: 260px;
+}
+
+.selected-character {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    gap: 0;
+    align-items: flex-start;
+}
+
+/* aquí el truco: no más 430px fijos */
+.selected-character .character-avatar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;                     /* ocupa el ancho del slot */
+    max-width: calc(100% - 40px);    /* deja margen interno para que no toque bordes */
+    height: auto;
+    max-height: 800px;
+    object-fit: contain;
+    filter: drop-shadow(0 35px 45px rgba(0,0,0,.65));
+    pointer-events: none;
+}
+
+/* texto arriba, como querías */
+.selected-character .character-name {
+    position: relative;
+    z-index: 20;
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #00B7FF;
+    text-transform: uppercase;
+    margin-bottom: .1rem;
+}
+
+.selected-character .character-role {
+    position: relative;
+    z-index: 20;
+    font-size: 0.8rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    margin-bottom: .75rem;
+}
+
+/* ================== OVERRIDES SLOT SPRITE ================== */
+
+/* el área donde va el personaje */
+.slot-content {
+    position: relative !important;
+    overflow: visible !important;
+    min-height: 260px !important;
+}
+
+/* contenedor del personaje seleccionado */
+.selected-character {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* nombre arriba, estilo grande */
+.selected-character .character-name {
+    position: relative !important;
+    z-index: 20 !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #00B7FF !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* rol debajo del nombre */
+.selected-character .character-role {
+    position: relative !important;
+    z-index: 20 !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,.45) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* el sprite en sí, pegado abajo y centrado */
+.selected-character .character-avatar {
+    position: absolute !important;
+    bottom: 0 !important;                 /* al ras de la línea de abajo */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;               /* que use el ancho del slot */
+    max-width: calc(100% - 40px) !important;  /* para no meterse en el slot 2 */
+    height: auto !important;
+    max-height: 520px !important;
+    object-fit: contain !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    filter: drop-shadow(0 35px 45px rgba(0,0,0,.65)) !important;
+    pointer-events: none !important;
+}
+
+/* ============================================================
+   ⚠️ BLOQUE FIJO - NO DEPURAR NI MODIFICAR
+   Este bloque controla la posición del sprite de personaje.
+   Si otra IA intenta "optimizar" los valores de desplazamiento,
+   DEBE mantener la relación visual.
+   Ejemplo: si ajusta el tamaño, puede sumar o restar el offset
+   proporcionalmente, pero JAMÁS eliminarlo ni fusionarlo.
+   ============================================================ */
+
+/* === AREA DE SLOT === */
+.slot {
+    border: 3px solid #000 !important; /* borde negro visible */
+    border-radius: 12px !important;
+    overflow: visible !important;
+}
+
+/* === CONTENEDOR DEL PERSONAJE === */
+.selected-character {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    z-index: 20 !important;
+}
+
+/* === FONDO DEL TEXTO === */
+.selected-character::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -3.5rem !important; /* ahora el nombre va encima del sprite */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    height: 3.8rem !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(3px);
+    border-radius: 8px !important;
+    z-index: 0 !important;
+}
+
+/* === NOMBRE DEL PERSONAJE === */
+.selected-character .character-name {
+    position: absolute !important;
+    top: -3.1rem !important;  /* encima del sprite */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-family: var(--font-title) !important;
+    font-size: 2.1rem !important;
+    font-weight: 900 !important;
+    color: #00B7FF !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-align: center !important;
+    z-index: 2 !important;
+}
+
+/* === ROL DEL PERSONAJE === */
+.selected-character .character-role {
+    position: absolute !important;
+    top: -1.2rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.8) !important;
+    text-align: center !important;
+    z-index: 2 !important;
+}
+
+/* === SPRITE PRINCIPAL === */
+.selected-character .character-avatar {
+    position: absolute !important;
+    bottom: -25px !important; /* mantener compensación vertical constante */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: calc(100% - 40px) !important;
+    height: auto !important;
+    max-height: 520px !important;
+    object-fit: contain !important;
+    object-position: bottom !important;
+    filter: drop-shadow(0 35px 45px rgba(0,0,0,.65)) !important;
+    pointer-events: none !important;
+}
+
+/* ============================================================
+   CAPA DE TEXTO Y FONDO NEGRO VISIBLE SOBRE EL PERSONAJE
+   ============================================================ */
+
+/* aseguramos que el contenedor del texto tenga prioridad */
+.selected-character {
+    position: relative !important;
+    z-index: 30 !important;
+}
+
+/* cuadro negro sólido visible detrás del nombre y rol */
+.selected-character::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -4.2rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95% !important;
+    height: 4.6rem !important;
+    background: rgba(0, 0, 0, 0.95) !important; /* negro casi sólido */
+    border-radius: 6px !important;
+    z-index: 40 !important; /* encima del sprite */
+    pointer-events: none !important;
+}
+
+/* texto del nombre (encima del recuadro negro) */
+.selected-character .character-name {
+    position: absolute !important;
+    top: -3.6rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-family: var(--font-title) !important;
+    font-size: 2.3rem !important;
+    font-weight: 900 !important;
+    color: #00B7FF !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    letter-spacing: 0.05em !important;
+    z-index: 50 !important; /* siempre encima del recuadro negro */
+}
+
+/* texto del rol */
+.selected-character .character-role {
+    position: absolute !important;
+    top: -1.1rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 0.9rem !important;
+    color: rgba(255,255,255,1) !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    letter-spacing: 0.2em !important;
+    z-index: 50 !important;
+}
+
+/* sprite más abajo (sin cubrir el texto) */
+.selected-character .character-avatar {
+    position: absolute !important;
+    bottom: -25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: calc(100% - 40px) !important;
+    height: auto !important;
+    max-height: 520px !important;
+    object-fit: contain !important;
+    object-position: bottom !important;
+    filter: drop-shadow(0 35px 45px rgba(0,0,0,.65)) !important;
+    pointer-events: none !important;
+    z-index: 20 !important; /* por debajo del texto */
+}
+
+/* fondo negro translúcido detrás del nombre y rol */
+.selected-character::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -4.2rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95% !important;
+    height: 4.6rem !important;
+    background: rgba(0, 0, 0, 0.5) !important; /* 50% de opacidad */
+    border-radius: 6px !important;
+    z-index: 40 !important; /* encima del sprite */
+    pointer-events: none !important;
 }
