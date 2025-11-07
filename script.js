@@ -194,9 +194,9 @@ class TeamBuilder {
             card.className = 'character-card';
             card.style.setProperty('--index', index);
 
-            // Create image path for selection grid (square images)
+            // Create image path for selection grid (square images 400x400)
             const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
-            const imagePath = `assets/select/${imageName}.png`;
+            const imagePath = `assets/cuadrados/${imageName}.png`;
 
             // Border color based on affinity
             const borderColor = character.affinity || '#666';
@@ -311,7 +311,7 @@ class TeamBuilder {
 
         if (character) {
             const imageName = character.name.toLowerCase().replace(/\s+/g, '_');
-            const imagePath = `assets/select/${imageName}.png`;
+            const imagePath = `assets/characters/${imageName}.png`;
             const borderColor = character.affinity || '#666';
 
             content.innerHTML = `
