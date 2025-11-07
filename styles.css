@@ -344,15 +344,15 @@ header {
 
 /* Imagen del personaje tipo sprite - sin recorte, completo */
 .character-avatar {
-    width: 320px;
+    width: 100%;
+    max-width: calc(100% - 40px);
     height: auto;
-    max-height: 380px;
+    max-height: 280px;
     border: none;
     border-radius: 0;
     background: transparent;
     object-fit: contain;
     filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.55));
-    transform: translateY(40px);
     animation: sprite-rise 0.45s ease-out forwards 0.05s;
     pointer-events: auto;
     position: relative;
@@ -1091,16 +1091,16 @@ footer {
     align-items: flex-start;
 }
 
-/* aquí el truco: no más 430px fijos */
+/* ajuste de tamaño para que quepa dentro del slot */
 .selected-character .character-avatar {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;                     /* ocupa el ancho del slot */
-    max-width: calc(100% - 40px);    /* deja margen interno para que no toque bordes */
+    width: 100%;
+    max-width: calc(100% - 40px);
     height: auto;
-    max-height: 800px;
+    max-height: 280px;
     object-fit: contain;
     filter: drop-shadow(0 35px 45px rgba(0,0,0,.65));
     pointer-events: none;
@@ -1180,13 +1180,13 @@ footer {
 /* el sprite en sí, pegado abajo y centrado */
 .selected-character .character-avatar {
     position: absolute !important;
-    bottom: 0 !important;                 /* al ras de la línea de abajo */
+    bottom: 10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    width: 100% !important;               /* que use el ancho del slot */
-    max-width: calc(100% - 40px) !important;  /* para no meterse en el slot 2 */
+    width: 100% !important;
+    max-width: calc(100% - 40px) !important;
     height: auto !important;
-    max-height: 520px !important;
+    max-height: 280px !important;
     object-fit: contain !important;
     background: transparent !important;
     border: none !important;
@@ -1268,13 +1268,13 @@ footer {
 /* === SPRITE PRINCIPAL === */
 .selected-character .character-avatar {
     position: absolute !important;
-    bottom: -25px !important; /* mantener compensación vertical constante */
+    bottom: 10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 100% !important;
     max-width: calc(100% - 40px) !important;
     height: auto !important;
-    max-height: 520px !important;
+    max-height: 280px !important;
     object-fit: contain !important;
     object-position: bottom !important;
     filter: drop-shadow(0 35px 45px rgba(0,0,0,.65)) !important;
@@ -1339,13 +1339,13 @@ footer {
 /* sprite más abajo (sin cubrir el texto) */
 .selected-character .character-avatar {
     position: absolute !important;
-    bottom: -25px !important;
+    bottom: 10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 100% !important;
     max-width: calc(100% - 40px) !important;
     height: auto !important;
-    max-height: 520px !important;
+    max-height: 280px !important;
     object-fit: contain !important;
     object-position: bottom !important;
     filter: drop-shadow(0 35px 45px rgba(0,0,0,.65)) !important;
